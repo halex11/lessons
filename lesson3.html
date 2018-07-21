@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 3</title>
+</head>
+
+<style>
+
+  @font-face {
+    font-family: myDigitalFont;
+    src: url(digital-7.regular.ttf);
+  }
+
+  h1 {
+    font-family: myDigitalFont;
+    color: red;
+    text-shadow: 0 0 10px red;
+  }
+
+  p {
+    font-size: 25px;
+  }
+
+  .house {
+    position: absolute;
+  }
+
+  .house .roof {
+    background-color: chocolate;
+    width: 200px;
+    height: 200px;
+  }
+
+
+  .house .wall {
+    position: relative;
+    background-color: maroon;
+    width: 200px;
+    height: 200px;
+  }
+
+  .house .window {
+    background-color: #89c3eb;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 40px;
+    left: 47px;
+  }
+
+
+</style>
+
+<body>
+
+<h1>Lesson 3</h1>
+
+<button id="button1">Click me</button>
+<button id="button2">Click me too</button>
+
+<br/>
+
+
+<div class="house">
+  <div class="roof"></div>
+  <div class="wall">
+    <div class="window"></div>
+  </div>
+</div>
+
+
+</div>
+
+
+<script>
+
+
+
+  function greeting(name) {
+    console.log('Hello world');
+    console.log('My name is', name);
+
+    let date = new Date();
+
+    console.log('Today is ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+  }
+
+
+
+
+  window.addEventListener('load', function(event) {
+
+
+    greeting('Computer'); // показать приветствие
+    greeting('Human'); // показать приветствие
+
+
+    let $button1 = document.getElementById('button1'); // создать ссылку на button1
+    console.log($button1);
+    $button1.innerHTML = 'My super button'; // innerHTML внутренний контент тега
+
+    $button1.addEventListener('click', function () {
+      greeting('Robot');
+    });
+
+
+    setInterval(function () {
+      greeting('Timer');
+    }, 1000) // 1000ms это 1 секунда
+
+
+
+  });
+
+
+</script>
+
+</body>
+</html>

@@ -130,29 +130,48 @@
   //
   //
   //
-  // console.log('adaddada');
-  // alert('Hello World') // popup window
-  // let myAnsver = prompt("Please enter your name");
+
+
+
+  // console.log('adaddada'); // вывод в консоль
+  // alert('Hello World') // всплывающее окно со строкой
+  // let myAnswer = prompt("Please enter your name"); // запрос ввода строки от пользователя
+  // // alert(myAnswer);
+  // console.log('My answer is', myAnswer);
   //
-  // alert(myAnsver);
+  //
+  // let num = 0;
+  // let steps = 10;
+  //
+  // while (steps--) {
+  //   num = num + 1;
+  //   console.log(num);
+  // }
 
 
-  let num = 0;
-  let steps = 10;
+  // Math.random(); // число от 0 до 1
+  // Math.round(num); // округлить число
 
-  while (steps--) {
-    num = num + 1;
-    console.log(num);
-  }
-
-
-  Math.random(); // число от 0 до 1
-  Math.round(num); // округлить число
-
-  let randomFloat = Math.random() * 100;
+  let randomFloat = Math.random() * 10;
   let randomInt = Math.round(randomFloat);
-
   console.log(randomInt);
+  let trynum = 1;
+  let myAns = '';
+
+ do {
+
+   myAns = prompt("Please enter the number");
+   trynum++;
+    if (randomInt > myAns) {
+      alert('the number is higher');
+    } else if (randomInt < myAns) {
+      alert('the number is lower');
+
+    }
+ } while (myAns != randomInt);
+
+  alert('correct');
+  alert("numbers of tries" + trynum);
 
 </script>
 
