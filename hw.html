@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+
+  @font-face {
+    font-family: myDigitalFont;
+    src: url(digital-7.regular.ttf);
+  }
+
+
+  .watch {
+    position: absolute;
+    background-color: lightslategrey;
+    width: 500px;
+    height: 200px;
+    top: 100px;
+    left: 40px
+  }
+
+  .watch .glass {
+    background-color: white;
+    width: 480px;
+    height: 180px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 180px;
+    text-align: right;
+    font-family:myDigitalFont;
+  }
+
+
+  .watch .stringwithtime {
+    width: 470px;
+    height: 170px;
+  }
+
+  .watch .button {
+    background-color: darkred;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -20px;
+    right: 30px
+  }
+  .watch .button:active{
+    height: 5px;
+    top: -5px;
+  }
+
+
+</style>
+
+<body>
+
+
+  <div class="watch">
+
+    <div id="screen" class="glass">6:24:11</div>
+
+<div class="button"></div>
+  </div>
+
+<script>
+
+
+  function printtime(){
+
+    let date = new Date();
+    console.log('Hello ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+    let $screen = document.getElementById("screen");
+    $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+
+  }
+
+  window.addEventListener('load', function() {
+
+    let date = new Date();
+    let $screen = document.getElementById("screen");
+    console.log($screen);
+    $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+
+
+   printtime()
+    setInterval(function () {
+      printtime();
+    }, 1000)
+
+  });
+
+
+</script>
+</body>
+</html>
