@@ -32,6 +32,7 @@
     font-size: 180px;
     text-align: right;
     font-family:myDigitalFont;
+    z-index: 10;
   }
 
 
@@ -41,17 +42,25 @@
   }
 
   .watch .button {
-    background-color: darkred;
+    background-color: white;
     width: 20px;
     height: 20px;
     position: absolute;
     top: -20px;
-    right: 30px
+    right: 30px;
   }
-  .watch .button:active{
-    height: 5px;
-    top: -5px;
+
+  .watch .button-image {
+    background-color: darkred;
+    width: 20px;
+    height: 20px;
+    position: absolute;
   }
+
+  .watch .button:active .button-image{
+    top: 10px;
+  }
+
 
 
 </style>
@@ -61,22 +70,18 @@
 
   <div class="watch">
 
+    <div class="button" id="button">
+      <div class="button-image"></div>
+    </div>
+
     <div id="screen" class="glass">6:24:11</div>
 
-<div class="button"></div>
   </div>
 
 <script>
 
+  let isButtonPressed = false;
 
-  function printtime(){
-
-    let date = new Date();
-    console.log('Hello ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
-    let $screen = document.getElementById("screen");
-    $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
-
-  }
 
   window.addEventListener('load', function() {
 
@@ -85,13 +90,34 @@
     console.log($screen);
     $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
 
+    let $button = document.getElementById("button");
 
-   printtime()
+    $button.addEventListener('click',function () {
+      // $screen.innerHTML = ('00:00:00')
+      isButtonPressed = true;
+    })
+
+
+      printtime()
     setInterval(function () {
       printtime();
     }, 1000)
 
   });
+
+
+  function printtime(){
+    if(isButtonPressed == true) {
+      $screen.innerHTML = ('00:00:00');
+    } else {
+      let date = new Date();
+      console.log('Hello ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+      let $screen = document.getElementById("screen");
+      $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+    }
+  }
+
+
 
 
 </script>
