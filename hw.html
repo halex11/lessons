@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+
+  @font-face {
+    font-family: myDigitalFont;
+    src: url(digital-7.regular.ttf);
+  }
+
+
+  .watch {
+    position: absolute;
+    background-color: lightslategrey;
+    width: 500px;
+    height: 200px;
+    top: 100px;
+    left: 40px
+  }
+
+  .watch .glass {
+    background-color: white;
+    width: 480px;
+    height: 180px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 180px;
+    text-align: right;
+    font-family:myDigitalFont;
+    z-index: 10;
+  }
+
+
+  .watch .stringwithtime {
+    width: 470px;
+    height: 170px;
+  }
+
+  .watch .button {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -20px;
+    right: 30px;
+  }
+
+  .watch .button-image {
+    background-color: darkred;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  }
+
+  .watch .button:active .button-image{
+    top: 10px;
+  }
+
+
+
+</style>
+
+<body>
+
+
+  <div class="watch">
+
+    <div class="button" id="button">
+      <div class="button-image"></div>
+    </div>
+
+    <div id="screen" class="glass">6:24:11</div>
+
+  </div>
+
+<script>
+
+  let isButtonPressed = false;
+
+
+  window.addEventListener('load', function() {
+
+    let date = new Date();
+    let $screen = document.getElementById("screen");
+    console.log($screen);
+    $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+
+    let $button = document.getElementById("button");
+
+    $button.addEventListener('click',function () {
+      // $screen.innerHTML = ('00:00:00')
+      isButtonPressed = true;
+    })
+
+
+      printtime()
+    setInterval(function () {
+      printtime();
+    }, 1000)
+
+  });
+
+
+  function printtime(){
+    if(isButtonPressed == true) {
+      $screen.innerHTML = ('00:00:00');
+    } else {
+      let date = new Date();
+      console.log('Hello ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+      let $screen = document.getElementById("screen");
+      $screen.innerHTML = ('' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+    }
+  }
+
+
+
+
+</script>
+</body>
+</html>
