@@ -34,22 +34,65 @@
 
 <table class="tick-tack">
   <tr>
-    <td></td><td></td><td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td></td><td class="clicked"></td><td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td></td><td></td><td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
 
 <script>
+let k=0;
 
   window.addEventListener('load', function() {
+    let boxex =  document.querySelectorAll('td'); // получить все элементы с классом box
+    let boxex2d = [
+      [], [], []
+    ];
 
+    for (let i = 0; i < boxex.length; i++) {
+      console.log('box ' + i, boxex[i]);
+    }
+    console.log('boxes2d', boxex2d);
+
+
+
+    for (let i = 0; i < boxex.length; i++) {
+      let box = boxex[i];
+
+      box.addEventListener('click', function (event) {
+        const $currentBox = event.currentTarget; // current target  содержит ссылку на элемент по которому произвели клик
+        if($currentBox.innerHTML != ''){
+          return
+        }
+        $currentBox.innerHTML = 'X';
+        $currentBox.classList.add('clicked');
+
+        k++;
+        if(k % 2 == 0){
+          box.innerHTML = ('O');
+          //$currentBox.classList.add('clicked');
+          //k++;
+        }
+      })
+
+
+       // innerHTML
+      // if(k % 2 == 1){
+
+    }
   });
+
 
 
 </script>
