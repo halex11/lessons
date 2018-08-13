@@ -55,14 +55,17 @@
 let k=0;
 
   window.addEventListener('load', function() {
-    let boxex =  document.querySelectorAll('td'); // получить все элементы с классом box
+    let boxex =  document.querySelectorAll('td'); // получить все элементы с классом td
     let boxex2d = [
       [], [], []
     ];
-
     for (let i = 0; i < boxex.length; i++) {
       console.log('box ' + i, boxex[i]);
-    }
+      let colInd = i % 3;
+      let rowInd = Math.floor(i / 3);
+      boxex2d[rowInd][colInd] = boxex[i];
+
+      }
     console.log('boxes2d', boxex2d);
 
 
@@ -84,11 +87,14 @@ let k=0;
           //$currentBox.classList.add('clicked');
           //k++;
         }
+        if((boxex2d[0][0].innerHTML == boxex2d[0][1].innerHTML) && (boxex2d[0][2].innerHTML == boxex2d[0][1].innerHTML) && (boxex2d[0][0].innerHTML != '')) {
+
+          setTimeout(function () { // выполнить функцию через 1 сек
+            alert('Game over');
+          }, 1000)
+        }
       })
 
-
-       // innerHTML
-      // if(k % 2 == 1){
 
     }
   });
