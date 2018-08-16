@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>Lesson 8</title>
+ </head>
+ <body>
+
+
+ <style>
+
+   body {
+     background-color: black;
+   }
+
+   #mycanvas {
+     background-color: #222;
+   }
+
+
+ </style>
+
+
+
+ <canvas id="mycanvas" width="800" height="700"></canvas>
+
+
+ <script>
+
+
+   window.addEventListener('load', function() {
+
+     let canvas = document.getElementById('mycanvas'); // получить элемент canvas
+     let ctx = canvas.getContext('2d'); // получить контекст для рисования 2d графики
+
+
+     let width = canvas.width;
+     let height = canvas.height;
+
+     // задаем красный цвет для кисти
+     ctx.strokeStyle="#FFFFFF";
+
+     // задаем синий цвет для заливки
+     ctx.fillStyle="#FFFFFF";
+
+     // задаем размер и стиль шрифта
+     ctx.font = '20px Arial';
+
+     // // рисуем линию
+     // ctx.moveTo(0, 0);
+     // ctx.lineTo(200, 100);
+     // ctx.lineTo(250, 150);
+     // ctx.lineTo(230, 400);
+     // ctx.stroke();
+     //
+     //
+     // // рисуем окружность
+     // ctx.beginPath();
+     // ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+     // ctx.stroke();
+     //
+     // // рисуем прямоугольник
+     // ctx.fillRect(150, 150, 150, 100);
+     //
+     // // рисуем текст
+     // ctx.fillText('Big smile!', 200, 300);
+     //
+     //
+     //
+     //
+     // // рисуем 1000 кругов сразу
+     // for (let i = 0; i < 1000; i++) {
+     //
+     //   let x = Math.random() * width;
+     //   let y = Math.random() * height;
+     //
+     //   ctx.beginPath();
+     //   ctx.arc(x, y, 10, 0, 2 * Math.PI);
+     //   ctx.stroke();
+     // }
+     //
+     //
+     // // рисуем по 1 кругу за раз
+     // setInterval(function () {
+     //
+     //   let red = Math.round(Math.random() * 255);
+     //   let green = Math.round(Math.random() * 255);
+     //   let blue = Math.round(Math.random() * 255);
+     //
+     //   let color = '#' + red.toString(16) + green.toString(16) + blue.toString(16);
+     //   ctx.strokeStyle = color;
+     //
+     //   let x = Math.random() * width;
+     //   let y = Math.random() * height;
+     //
+     //   ctx.beginPath();
+     //   ctx.arc(x, y, 10 * Math.random(), 0, 2 * Math.PI);
+     //   ctx.stroke();
+     // }, 50);
+
+     ctx.moveTo(0, height / 2);
+     ctx.lineTo(width , height / 2);
+     //ctx.lineTo(250, 150);
+     //ctx.lineTo(230, 400);
+     ctx.stroke()
+
+     ctx.beginPath();
+     ctx.moveTo(width / 2, 0);
+     ctx.lineTo(width / 2, height);
+     ctx.stroke()
+
+     let disty = 0;
+     for( let y = 10; y >= -10; y--){
+       ctx.fillText(y, width / 2, 0 + disty);
+       disty += height / 20;
+     };
+     let distx = 0;
+     for( let x = 10; x >= -10; x--){
+       ctx.fillText(x, 0 + distx, height / 2);
+       distx += width / 20;
+     };
+
+     for(let x1 = 0; x1 <= 10; x++){
+     let y1 = x1*x1*x1 + 10;
+     ctx.moveTo(x1, y1);
+     ctx.lineTo(x1 , y1);
+     ctx.stroke()
+     }
+     for(let x1 = 0; x1 >= -10; x--){
+     let y1 = x1*x1*x1 + 10;
+     ctx.moveTo(x1, y1);
+     ctx.lineTo(x1 , y1);
+     ctx.stroke()
+     }
+   });
+
+
+ </script>
+
+ </body>
+ </html>
